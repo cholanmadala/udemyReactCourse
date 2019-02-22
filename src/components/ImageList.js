@@ -1,18 +1,27 @@
 import React, {Component} from 'react';
+import './ImageList.css';
+import ImageCard from './ImageCard';
 
 class ImageList extends Component {
 	
 	renderContent = () => {
 		const data = this.props.data;
-		const content =  data.map((item, index) => <img alt="img" style={{width: "300px", height: "300px"}} src={item.urls.regular} key={index} /> );
+		const content =  data.map((image, index) => <ImageCard
+			image={image}
+			key={index} 
+		/> );
 		return content;
 	}
 
 	render() {
 		return (
-			<div>
-			<h4>Found {this.props.data.length} images</h4>
-				{this.renderContent()}
+			<div className="ui segment">
+				<div className="field">
+				<h4>Found {this.props.data.length} images</h4>
+					<div className="imageList">
+						{this.renderContent()}
+					</div>
+				</div>
 			</div>
 		)
 	}
