@@ -1,8 +1,8 @@
 import React from 'react';
 import faker from 'faker';
 
-import Comment from './components/Comment';
-import ApprovalCard from './components/ApprovalCard';
+import Comment from '../components/Comment';
+import ApprovalCard from '../components/ApprovalCard';
 
 const Comments = () => {
 	return (
@@ -12,7 +12,7 @@ const Comments = () => {
 				<div>Want to Proceed further??</div>
 			</ApprovalCard>
 			<ApprovalCard >
-				<Comment 
+				<Comment
 					avatar={faker.image.avatar()}
 					author={faker.internet.userName()}
 					comment='Awesome!'
