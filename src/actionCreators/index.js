@@ -4,11 +4,11 @@ const data = [
 	{name:'Ricky Martin', duration: '5:20'},
 	{name:'Micheal Jackson', duration: '4:50'},
 	{name:'David Guetta', duration: '6:45'},
-	{name:'Akon', duration: '3:20'},
-	{name:'Queen', duration: '5:20'},
-	{name:'Back Street Boys', duration: '8:20'},
-	{name:'Aqua', duration: '5:20'},
-	{name:'Britney Spears', duration: '5:20'},
+	{name:'Akon', duration: '3:38'},
+	{name:'Queen', duration: '5:54'},
+	{name:'Back Street Boys', duration: '8:08'},
+	{name:'Aqua', duration: '5:03'},
+	{name:'Britney Spears', duration: '5:46'},
 ]
 
 export const getSongs = () => {

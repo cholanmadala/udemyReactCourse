@@ -8,27 +8,55 @@ class Songs extends Component {
 		this.props.getSongs();
 	}
 
-	render() {
-		console.log(this.props.songs)
-		return (
-			<div className="ui segment">
-				Songs
-				<div>
-					<h3>Songs List</h3>
+	// onButtonClick = (song) => () => {
+	// 	this.props.selectASong(song);
+	// }
 
+	getSongs = () => {
+		return this.props.songs.map((song, index) => {
+			return <div key={index} className="item">
+				<div className="right floated content">
+					<button className="ui button primary" onClick={() => this.props.selectASong(song)} >
+						Select
+					</button>
 				</div>
-				<div >
-					<h3>Selected Song</h3>
+				<div className="content">{song.name}</div>
+			</div>
+		});
+	}
 
+	render() {
+		return (
+			<div className="ui container grid">
+				<div className="ui row" >
+					<div className="column eight wide">
+						<h3>Songs</h3>
+						<div className="ui divided list">
+							{this.getSongs()}
+						</div>
+					</div>
+					<div >
+						<h3>Selected Song</h3>
+						{this.props.selectedSong ? <div className="right floated content">
+							<div>
+								<h3>Artist: {this.props.selectedSong.name}</h3>
+							</div>
+							<div>
+								<h3>Duration: {this.props.selectedSong.duration}</h3>
+							</div>
+						</div>: null}
+						
+					</div>
 				</div>
 			</div>
 		);
 	}
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = ({songs}) => {
 	return {
-		songs: state.songs
+		songs: songs.songs,
+		selectedSong: songs.selectedSong
 	}
 }
 
