@@ -21,7 +21,14 @@ export const getSongs = () => {
 
 
 export const selectASong = (song) => {
-	return (dispatch) => {
-		return dispatch(selectSong(song));
-	}
+	console.log('selectASong action creator');
+	// return (dispatch) => {
+	// 	return dispatch(selectSong(song));
+	// }
+	// return {
+	// 	type:'SELECT_SONG',
+	// 	payload: song
+	// };
+
+	return selectSong(song);
 };
