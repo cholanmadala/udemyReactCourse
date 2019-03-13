@@ -1,4 +1,6 @@
-import {getSongsList, selectSong} from '../actions';
+import {getSongsList, selectSong, searchTerm} from '../actions';
+
+import searchApi from '../apis';
 
 const data = [
 	{name:'Ricky Martin', duration: '5:20'},
@@ -32,3 +34,18 @@ export const selectASong = (song) => {
 
 	return selectSong(song);
 };
+
+
+export const searchATerm = (term) =>  async dispatch => {
+	//make an api call
+	const response = await searchApi.get('/photos', {
+			headers: {
+				Authorization: 'Client-ID 5edcc90dbe91ad23abf0cf59223b59301a3767365586e47cfa3df4e2acad8347'
+			},
+			params: {
+				query: term
+			} 
+		});
+	// return an action
+	return dispatch(searchTerm({data: response.data.results, term}));
+}

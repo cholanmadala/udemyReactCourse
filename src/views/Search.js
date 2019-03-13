@@ -1,23 +1,14 @@
 import React, {Component} from 'react';
-import axios from 'axios';
 import SearchBar from '../components/SearchBar';
 import ImageList from '../components/ImageList';
+import {connect} from 'react-redux';
+import {searchATerm} from '../actionCreators';
 
 class Search extends Component {
-	state = {data: []};
 
-	onSearchSubmit = async (term) => {
-
-		const response = await axios.get('https://api.unsplash.com/search/photos', {
-			headers: {
-				Authorization: 'Client-ID 5edcc90dbe91ad23abf0cf59223b59301a3767365586e47cfa3df4e2acad8347'
-			},
-			params: {
-				query: term
-			}
-		});
-
-		this.setState({data: response.data.results});
+	onSearchSubmit = (term) => {
+		//invoke action creator
+		this.props.searchATerm(term);
 	}
 
 	render () {
@@ -25,12 +16,22 @@ class Search extends Component {
 			<div>
 				<SearchBar
 					onSubmit={this.onSearchSubmit}
+					term={this.props.term}
 				/>
-				<ImageList data={this.state.data} />
+				<ImageList data={this.props.data} />
 			</div>
 		);
 	}
 
 };
 
-export default Search;
+const mapStateToProps = ({search}) => {
+	return {
+		data: search.images,
+		term: search.term
+	};
+}
+
+export default connect(mapStateToProps, {
+	searchATerm
+})(Search);

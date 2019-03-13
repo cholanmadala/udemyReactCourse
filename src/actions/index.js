@@ -11,3 +11,10 @@ export const selectSong = (song) => {
 		payload: song
 	}
 }
+
+export const searchTerm = (data) => {
+	return {
+		type: 'SEARCH_TERM',
+		payload: data
+	}
+}

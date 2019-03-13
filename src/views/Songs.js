@@ -5,7 +5,9 @@ import {getSongs, selectASong} from '../actionCreators';
 class Songs extends Component {
 
 	componentDidMount () {
-		this.props.getSongs();
+		if (this.props.songs.length === 0) {
+			this.props.getSongs();
+		}
 	}
 
 	// onButtonClick = (song) => () => {
