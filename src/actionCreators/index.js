@@ -36,7 +36,7 @@ export const selectASong = (song) => {
 };
 
 
-export const searchATerm = (term) =>  async dispatch => {
+export const searchATerm = (term) => async dispatch => {
 	//make an api call
 	const response = await searchApi.get('/photos', {
 			headers: {
@@ -46,6 +46,6 @@ export const searchATerm = (term) =>  async dispatch => {
 				query: term
 			} 
 		});
-	// return an action
+	// dispatch an action
 	return dispatch(searchTerm({data: response.data.results, term}));
 }
